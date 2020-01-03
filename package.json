@@ -1,0 +1,22 @@
+{
+  "name": "createslider",
+  "version": "1.0.0",
+  "description": "A super simple slider",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamlaw18/createSlider.git"
+  },
+  "keywords": [
+    "slider"
+  ],
+  "author": "Will Law",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/williamlaw18/createSlider/issues"
+  },
+  "homepage": "https://github.com/williamlaw18/createSlider#readme"
+}
