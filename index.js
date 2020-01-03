@@ -7,7 +7,7 @@ module.exports.createSlider = (
   autoplayInterval = 4000,
   dotsBool = true,
   arrowsBool = true,
-  responsive
+  draggableBool = true
 ) => {
   // Creates slider elements
   if (!slider.classList.contains('createSlider')) {
@@ -192,42 +192,48 @@ module.exports.createSlider = (
     });
   }
 
-  // Desktop Drag
-  function desktopDrag(e) {
-    mouseMoveAmmount = mousePosOnClick - e.clientX + MouseMoveRound;
-    wrapper.style.transform = `translateX(${-mouseMoveAmmount}px)`;
-  }
-
-  // Desktop Event Listeners
-  window.addEventListener('mousedown', function(e) {
-    mousePosOnClick = e.clientX;
-    window.addEventListener('mousemove', desktopDrag);
-  });
-  window.addEventListener('mouseup', function(event) {
-    window.removeEventListener('mousemove', desktopDrag);
-    if (!event.target.classList.contains('createSlider__button')) {
-      snapToSlide(mouseMoveAmmount);
+  if (draggableBool){
+    // Desktop Drag
+    function desktopDrag(e) {
+      mouseMoveAmmount = mousePosOnClick - e.clientX + MouseMoveRound;
+      wrapper.style.transform = `translateX(${-mouseMoveAmmount}px)`;
     }
-    slideAutoReset();
-  });
 
-  // Mobile Drag
-  function mobileDrag(e) {
-    mouseMoveAmmount = mousePosOnClick - e.touches[0].pageX + MouseMoveRound;
-    wrapper.style.transform = `translateX(${-mouseMoveAmmount}px)`;
-  }
+    // Desktop Event Listeners
+    window.addEventListener('mousedown', function(e) {
+      mousePosOnClick = e.clientX;
+      window.addEventListener('mousemove', desktopDrag);
+    });
+    window.addEventListener('mouseup', function(event) {
+      window.removeEventListener('mousemove', desktopDrag);
+      if (!event.target.classList.contains('createSlider__button')) {
+        snapToSlide(mouseMoveAmmount);
+      }
+      slideAutoReset();
+    });
 
-  // Mobile Event Listeners
-  slider.addEventListener('touchstart', function(e) {
-    mousePosOnClick = e.touches[0].pageX;
-    slider.addEventListener('touchmove', mobileDrag);
-  });
-  slider.addEventListener('touchend', function(event) {
-    slider.removeEventListener('touchmove', mobileDrag);
-    if (!event.target.classList.contains('createSlider__button')) {
-      snapToSlide(mouseMoveAmmount);
+    // Mobile Drag
+    function mobileDrag(e) {
+      mouseMoveAmmount = mousePosOnClick - e.touches[0].pageX + MouseMoveRound;
+      wrapper.style.transform = `translateX(${-mouseMoveAmmount}px)`;
     }
-    slideAutoReset();
-  });
+
+    // Mobile Event Listeners
+    slider.addEventListener('touchstart', function(e) {
+      mousePosOnClick = e.touches[0].pageX;
+      slider.addEventListener('touchmove', mobileDrag);
+    });
+    slider.addEventListener('touchend', function(event) {
+      slider.removeEventListener('touchmove', mobileDrag);
+      if (!event.target.classList.contains('createSlider__button')) {
+        snapToSlide(mouseMoveAmmount);
+      }
+      slideAutoReset();
+    });
+  }
 }
+
+const sliderWrapper = document.getElementById('wrapper');
+
+createSlider( sliderWrapper, 2 , true , 5000 , true , true, true );
 

@@ -17,6 +17,7 @@ Autoplay | toggles autoplay | bool | false
 Autoplay Interval | interval between slide change (ms) | integer | 4000
 Quick Nav | toggles visibility of quick navigation dots | bool | true
 Arrows | toggles visibility of Next and Prev slide buttons | bool | true
+Draggable | toggles the ability to drag the slides with mouse or touch | bool | true
 
 ## Example
 
