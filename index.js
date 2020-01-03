@@ -232,8 +232,3 @@ module.exports.createSlider = (
     });
   }
 }
-
-const sliderWrapper = document.getElementById('wrapper');
-
-createSlider( sliderWrapper, 2 , true , 5000 , true , true, true );
-
