@@ -1,14 +1,15 @@
 // Create Slider
 
-module.exports.createSlider = (
-  slider,
-  itemsPerSlide = 1,
-  autoplayBool = false,
-  autoplayInterval = 4000,
-  dotsBool = true,
-  arrowsBool = true,
-  draggableBool = true
-) => {
+function createSlider(args) {
+  const {
+    slider,
+    itemsPerSlide = 1,
+    autoplayBool = false,
+    autoplayInterval = 4000,
+    dotsBool = true,
+    arrowsBool = true,
+    draggableBool = true,
+  } = args;
   // Creates slider elements
   if (!slider.classList.contains('createSlider')) {
     slider.classList.add('createSlider');
